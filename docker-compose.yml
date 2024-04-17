@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  student_app:
+    build: .
+    ports:
+      - '8099:8080'
+    depends_on:
+      - mysql
+    env_file:
+      - database.env
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    env_file:
+      - database.env
+    ports:
+      - '3318:3306'
